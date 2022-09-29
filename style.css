@@ -1,0 +1,269 @@
+:root {
+  --primary-color: #ec1f55;
+  --text-color: #333;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url("https://img.freepik.com/premium-photo/shinny-stars-animation-black-backgroundgraphic-motion-overlay-effect-loop-with-galaxy-sky-twinkling-light-space-your-text-beautiful-dark-night-sky_599740-1407.jpg?w=2000");
+}
+html {
+  font-family: "Poppins", sans-serif;
+}
+.player {
+  /* position: relative; */
+  max-width: 480px;
+  margin: 0 auto;
+}
+/* set toggle play and pause button */
+.player .icon-pause {
+  display: none;
+}
+.player.playing .icon-play {
+  display: none;
+}
+.player.playing .icon-pause {
+  display: inline-block;
+}
+/* dashboard */
+.dashboard {
+  width: 100%;
+  max-width: 480px;
+  padding: 16px 16px 14px;
+
+  position: fixed;
+  top: 0;
+
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+}
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+header h4 {
+  color: var(--primary-color);
+  font-size: 12px;
+}
+header h2 {
+  color: var(--text-color);
+  font-size: 20px;
+}
+/* CD */
+.cd {
+  margin: 0 auto;
+  width: 200px;
+}
+.cd-thumb {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 50%;
+  background-size: cover;
+}
+/* Control button */
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 18px 0 8px 0;
+}
+.control .btn {
+  color: #666;
+  padding: 18px;
+  font-size: 18px;
+}
+.control i {
+  cursor: pointer;
+}
+.control .btn.active {
+  color: var(--primary-color);
+}
+.control .btn-toggle-play {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+
+  color: #fff;
+  background-color: var(--primary-color);
+}
+/* volume input range */
+.volume-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.volume-btn .btn-not-mute {
+  display: none;
+}
+.volume-btn.isVolumeNotMute .btn-mute {
+  display: none;
+}
+.volume-btn.isVolumeNotMute .btn-not-mute {
+  display: inline-block;
+}
+
+.volume-btn i {
+  color: var(--primary-color);
+  margin-right: 16px;
+}
+/* seek song input range*/
+.progress {
+  width: 100%;
+  height: 7px;
+
+  -webkit-appearance: none;
+  appearance: none;
+
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 6px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+/* Wing container */
+.wing-container {
+  position: fixed;
+  top: 45%;
+  --width-wing: 200px;
+  --width-song: 456px;
+  --right-black-margin: calc((100% - var(--width-song)) / 2);
+  left: calc(
+    100% - var(--width-song) - var(--width-wing) - var(--right-black-margin)
+  );
+}
+.left-wing {
+  background-image: url("assets/img/sub_img/wing.gif");
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+}
+.right-wing {
+  width: 200px;
+  height: 200px;
+
+  background-size: cover;
+  background-image: url("assets/img/sub_img/wing.gif");
+  transform: rotateY(190deg);
+
+  position: absolute;
+  top: 0%;
+  left: 327%;
+}
+/* Playist */
+.playist {
+  margin-top: 420px;
+  padding: 12px;
+}
+.song {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  border-radius: 5px;
+
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.song.active {
+  background-color: var(--primary-color);
+}
+.song:active {
+  background-color: #8c2641;
+}
+.song.active .title,
+.song.active .author,
+.song.active .sound-wave {
+  color: #fff;
+}
+.song .thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-size: cover;
+  margin: 0 8px;
+}
+.song .body {
+  flex: 1;
+  padding: 0 16px;
+}
+.song .title {
+  font-size: 18px;
+  color: var(--text-color);
+}
+.song .author {
+  font-size: 12px;
+  color: #999;
+}
+.song .sound-wave {
+  padding: 16px 8px;
+  color: #999;
+  font-size: 18px;
+  display: flex;
+  display: none;
+}
+.song.active .sound-wave {
+  display: flex;
+}
+.song .sound-wave-item:nth-child(1) {
+  animation: runningSoundWave .2s linear infinite alternate;
+}
+.song .sound-wave-item:nth-child(2) {
+  animation: runningSoundWave .2s ease-in infinite alternate-reverse;
+}
+.song .sound-wave-item:nth-child(3) {
+  animation: runningSoundWave .3s ease-out infinite alternate;
+}
+.playist .song .sound-wave-item {
+  background-color: #57c7db;
+  width: 8px;
+  height: 7px;
+  margin-left: 3px;
+  animation-play-state: paused;
+}
+
+.player.playing .sound-wave-item{
+  animation-play-state: running;
+}
+
+@keyframes runningSoundWave {
+  0%,
+  19.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea,
+      0 -12px 0 #caecf1;
+  }
+  20%,
+  39.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea;
+  }
+  40%,
+  59.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2;
+  }
+  60%,
+  79.9% {
+    box-shadow: 0 -3px 0 #57c7db;
+  }
+  80%,
+  100% {
+    box-shadow: none;
+  }
+}
